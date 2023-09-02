@@ -28,3 +28,7 @@
 
 [Fixed]
  - Fixed skipping a move when entering a number other than 1 to 9.
+
+## v3.5
+[Added]
+ - Change language in game.
