@@ -3,7 +3,7 @@
  Main file - tictactoe.exe
 
 ## v1.0
-- [Added]
+[Added]
  - Mechanics of moves.
 
 ## v1.5
