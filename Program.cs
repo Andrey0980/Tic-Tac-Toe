@@ -22,6 +22,24 @@ byte new_move = 0;
 bool game_end = false;
 
 // Функции //
+void resetvars()
+{
+    map_1 = 0;
+    map_2 = 0;
+    map_3 = 0;
+    map_4 = 0;
+    map_5 = 0;
+    map_6 = 0;
+    map_7 = 0;
+    map_8 = 0;
+    map_9 = 0;
+
+    // Ходы //
+    // 1 = х | 2 = o
+    move = 1;
+    new_move = 0;
+}
+
 void PrintMap() // Отрисовка карты
 {
     Console.Clear();
@@ -287,12 +305,12 @@ void PrintNewMoveText() // Написать текст о новом ходе
     if (move == 1)
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("X move");
+        Console.WriteLine("O move");
     }
     else if (move == 2)
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("O move");
+        Console.WriteLine("X move");
     }
     Console.ResetColor();
     NewMoveChanger();
@@ -416,20 +434,27 @@ void CheckEnd() // Проверка победы
 }
 
 // Игра
-while (game_end == false)
+while (true)
 {
-    PrintMap();
+    while (game_end == false)
+    {
+        PrintMap();
 
-    PrintNewMoveText();
-    try
-    {
-        new_move = Convert.ToByte(Console.ReadLine());
+        PrintNewMoveText();
+        try
+        {
+            new_move = Convert.ToByte(Console.ReadLine());
+        }
+        catch (System.FormatException)
+        {
+            NewMoveChanger();
+            continue;
+        }
+
+        NewMove();
     }
-    catch (System.FormatException) 
-    {
-        NewMoveChanger();
-        continue;
-    }
-    
-    NewMove();
+    if (game_end == true) Console.WriteLine("Play again?");
+    Console.ReadLine();
+    game_end = false;
+    resetvars();
 }

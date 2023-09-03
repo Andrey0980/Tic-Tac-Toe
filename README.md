@@ -31,4 +31,8 @@
 
 ## v3.5
 [Added]
- - Change language in game.
+ - Changed language in game.
+
+## v4.0
+[Added]
+ - Add Added possibility to continue the game after victory / defeat.
